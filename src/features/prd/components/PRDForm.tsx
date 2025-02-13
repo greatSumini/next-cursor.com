@@ -34,7 +34,7 @@ export function PRDForm({
 }: {
   onSubmit: (data: PRDFormData) => void;
 }) {
-  const [references, setReferences] = useState<string[]>([""]);
+  const [reference, setReference] = useState("");
   const [features, setFeatures] = useState("");
   const [selectedPlatforms, setSelectedPlatforms] = useState<Platform[]>([]);
   const [storageType, setStorageType] =
@@ -47,7 +47,7 @@ export function PRDForm({
     e.preventDefault();
     onSubmit({
       overview,
-      references: references.filter(Boolean),
+      reference,
       features: features.split("\n").filter(Boolean),
       targetUsers,
       platforms: selectedPlatforms,
@@ -73,33 +73,13 @@ export function PRDForm({
 
           <div className="space-y-2">
             <Label>참고 서비스 URL</Label>
-            {references.map((ref, index) => (
-              <div key={index} className="flex gap-2">
-                <Input
-                  placeholder="https://"
-                  value={ref}
-                  onChange={(e) => {
-                    const newRefs = [...references];
-                    newRefs[index] = e.target.value;
-                    if (index === references.length - 1 && e.target.value) {
-                      newRefs.push("");
-                    }
-                    setReferences(newRefs);
-                  }}
-                />
-                {index !== references.length - 1 && (
-                  <Button
-                    type="button"
-                    variant="outline"
-                    onClick={() => {
-                      setReferences(references.filter((_, i) => i !== index));
-                    }}
-                  >
-                    삭제
-                  </Button>
-                )}
-              </div>
-            ))}
+            <Input
+              placeholder="https://"
+              value={reference}
+              onChange={(e) => {
+                setReference(e.target.value);
+              }}
+            />
           </div>
 
           <div className="space-y-2">
@@ -185,7 +165,7 @@ export function PRDForm({
             <Button
               onClick={() => {
                 setOverview("AI 이력서 분석 서비스");
-                setReferences([]);
+                setReference("");
                 setFeatures(
                   "로그인, 회원가입\n이력서 업로드\n이력서 분석, 항목별 피드백"
                 );

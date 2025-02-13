@@ -3,7 +3,7 @@ export type StorageType = "local(no-database)" | "database";
 
 export interface PRDFormData {
   overview: string;
-  references: string[];
+  reference: string;
   features: string[];
   targetUsers: string;
   platforms: Platform[];

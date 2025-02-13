@@ -10,7 +10,7 @@ ${data.overview}
 </product-overview>
 
 <references>
-${data.references.map((ref) => `- ${ref}`).join("\n")}
+${data.reference}
 </references>
 
 <must-features>
