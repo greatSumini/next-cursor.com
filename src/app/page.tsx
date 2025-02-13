@@ -13,22 +13,24 @@ export default function Page() {
     {
       title: "PRD 프롬프트 생성기",
       description:
-        "PRD(Product Requirements Document) 작성을 위한 프롬프트를 생성합니다.",
+        "PRD 작성을 위한 프롬프트를 생성합니다.\n가장 먼저 작성해주세요.",
       href: "/prd",
     },
     {
       title: "IA 프롬프트 생성기",
-      description: "Information Architecture 프롬프트 생성기",
+      description:
+        "IA 작성을 위한 프롬프트를 생성합니다.\n반드시 PRD를 먼저 작성해주세요.",
       href: "/ia",
     },
     {
       title: "유스케이스 프롬프트 생성기",
-      description: "Use Case 작성을 위한 프롬프트를 생성합니다.",
+      description:
+        "유스케이스 작성을 위한 프롬프트를 생성합니다.\n반드시 PRD, IA를 먼저 작성해주세요.",
       href: "/usecases",
     },
     {
       title: "HTML Table to JSON 변환기",
-      description: "HTML 테이블을 JSON 형식으로 변환합니다.",
+      description: "API 문서 내용을 변수로 옮길 때 좋습니다 :)",
       href: "/dev/table-to-json",
       dev: true,
     },

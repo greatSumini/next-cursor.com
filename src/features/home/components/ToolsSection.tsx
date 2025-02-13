@@ -63,7 +63,7 @@ export function ToolsSection({ title, tools }: Props) {
               <CardContent className="p-6 space-y-4">
                 <div className="space-y-2">
                   <h2 className="text-xl font-bold">{tool.title}</h2>
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-muted-foreground whitespace-pre-line">
                     {tool.description}
                   </p>
                 </div>
