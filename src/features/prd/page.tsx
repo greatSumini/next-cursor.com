@@ -75,7 +75,7 @@ export function PrdPage() {
           </DialogHeader>
         </DialogContent>
       </Dialog>
-      <div className="container max-w-3xl py-6 space-y-6">
+      <div className="container max-w-3xl py-10 space-y-6">
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <h1 className="text-3xl font-bold">
