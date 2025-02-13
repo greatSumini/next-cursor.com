@@ -1,8 +1,12 @@
-"use client";
-
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Next-Cursor.com",
+  description:
+    "Cursor를 Next-Level로 활용할 수 있게 해주는 도구 & 팁 모음 사이트",
+};
 
 export default function Page() {
   const tools = [
