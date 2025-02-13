@@ -51,7 +51,7 @@ export function PrdPage() {
             <DialogDescription className="space-y-4">
               아래 생성된 프롬프트를 ChatGPT 등 서비스에 붙여넣어주세요.
               <div className="relative">
-                <pre className="bg-muted p-4 rounded-lg whitespace-pre-wrap text-sm max-h-[300px] overflow-hidden">
+                <pre className="bg-muted p-4 rounded-lg whitespace-pre-wrap text-sm max-h-[300px] overflow-y-auto">
                   <span className="text-ellipsis h-full overflow-hidden">
                     {generatedPrompt}
                   </span>
