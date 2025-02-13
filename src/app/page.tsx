@@ -17,6 +17,11 @@ export default function Page() {
       href: "/prd",
     },
     {
+      title: "IA 프롬프트 생성기",
+      description: "Information Architecture 프롬프트 생성기",
+      href: "/ia",
+    },
+    {
       title: "HTML Table to JSON 변환기",
       description: "HTML 테이블을 JSON 형식으로 변환합니다.",
       href: "/dev/table-to-json",

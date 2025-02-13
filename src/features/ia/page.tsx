@@ -9,15 +9,14 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
-import { HelpCircle, Copy, ArrowRight } from "lucide-react";
-import { PRDForm } from "./components/PRDForm";
+import { HelpCircle, Copy } from "lucide-react";
+import { IAForm } from "./components/IAForm";
 import { generatePrompt } from "./lib/generatePrompt";
-import { PRDFormData } from "./types";
+import { IAFormData } from "./types";
 import { useState, useEffect } from "react";
 import JSConfetti from "js-confetti";
-import Link from "next/link";
 
-export function PrdPage() {
+export function IAPage() {
   const [isOpen, setIsOpen] = useState(false);
   const [generatedPrompt, setGeneratedPrompt] = useState("");
   const [jsConfetti, setJsConfetti] = useState<JSConfetti | null>(null);
@@ -26,7 +25,7 @@ export function PrdPage() {
     setJsConfetti(new JSConfetti());
   }, []);
 
-  const handleSubmit = async (data: PRDFormData) => {
+  const handleSubmit = async (data: IAFormData) => {
     const prompt = generatePrompt(data);
     setGeneratedPrompt(prompt);
     setIsOpen(true);
@@ -65,12 +64,6 @@ export function PrdPage() {
                   <Copy className="w-4 h-4" />
                 </Button>
               </div>
-              <Button className="w-full" asChild>
-                <Link href="/ia">
-                  IA도 작성해보세요!
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Link>
-              </Button>
             </DialogDescription>
           </DialogHeader>
         </DialogContent>
@@ -79,7 +72,7 @@ export function PrdPage() {
         <div className="space-y-2">
           <div className="flex items-center gap-2">
             <h1 className="text-3xl font-bold">
-              PRD 프롬프트 생성기
+              IA 프롬프트 생성기
               <Dialog>
                 <DialogTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -88,27 +81,29 @@ export function PrdPage() {
                 </DialogTrigger>
                 <DialogContent>
                   <DialogHeader>
-                    <DialogTitle>PRD가 무엇인가요?</DialogTitle>
+                    <DialogTitle>IA가 무엇인가요?</DialogTitle>
                     <DialogDescription className="space-y-4">
                       <p>
-                        PRD(Product Requirements Document)는 제품 요구사항
-                        문서로, 제품의 목적, 기능, 특징 등을 상세하게 정의하는
-                        문서입니다.
+                        IA(Information Architecture)는 정보 구조를 의미하며,
+                        웹사이트나 앱의 구조와 탐색 체계를 설계하는 것입니다.
                       </p>
-                      <p>커서를 활용한 개발에서 특히 중요한 역할을 합니다:</p>
+                      <p>IA는 다음과 같은 요소들을 포함합니다:</p>
                       <ul className="list-disc pl-4 space-y-2">
                         <li>
-                          <strong>명확한 기획 의도 전달:</strong> 기획자의
-                          의도를 명확하게 전달합니다.
+                          <strong>사이트맵:</strong> 전체 페이지 구조와 계층
+                          관계를 정의합니다.
                         </li>
                         <li>
-                          <strong>개발 범위 정의:</strong> 개발해야 할 기능과
-                          제약사항을 명확히 정의하여 개발 범위를 설정합니다.
+                          <strong>사용자 흐름:</strong> 주요 기능에 대한 사용자
+                          여정을 설계합니다.
                         </li>
                         <li>
-                          <strong>효율적인 개발 진행:</strong> 상세한 요구사항을
-                          바탕으로 AI가 더 정확한 코드를 생성할 수 있도록
-                          돕습니다.
+                          <strong>네비게이션 구조:</strong> 메뉴 구조와 이동
+                          경로를 설계합니다.
+                        </li>
+                        <li>
+                          <strong>콘텐츠 구성:</strong> 각 페이지의 주요 콘텐츠
+                          구성을 정의합니다.
                         </li>
                       </ul>
                     </DialogDescription>
@@ -118,14 +113,13 @@ export function PrdPage() {
             </h1>
           </div>
           <p className="text-muted-foreground">
-            PRD(Product Requirements Document) 작성을 위한 프롬프트를
-            생성합니다.
+            IA(Information Architecture) 작성을 위한 프롬프트를 생성합니다.
             <br />
             아래 양식을 작성해주세요.
           </p>
         </div>
 
-        <PRDForm onSubmit={handleSubmit} />
+        <IAForm onSubmit={handleSubmit} />
       </div>
     </>
   );
