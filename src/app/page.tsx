@@ -4,25 +4,25 @@ import { ToolsSection } from "@/features/home/components/ToolsSection";
 export default function Page() {
   const tools = [
     {
-      title: "PRD 프롬프트 생성기",
+      title: "1. PRD 프롬프트 생성기",
       description:
         "PRD 작성을 위한 프롬프트를 생성합니다.\n가장 먼저 작성해주세요.",
       href: "/prd",
     },
     {
-      title: "IA 프롬프트 생성기",
+      title: "2. IA 프롬프트 생성기",
       description:
         "IA 작성을 위한 프롬프트를 생성합니다.\n반드시 PRD를 먼저 작성해주세요.",
       href: "/ia",
     },
     {
-      title: "유스케이스 프롬프트 생성기",
+      title: "3. 유스케이스 프롬프트 생성기",
       description:
         "유스케이스 작성을 위한 프롬프트를 생성합니다.\n반드시 PRD, IA를 먼저 작성해주세요.",
       href: "/usecases",
     },
     {
-      title: "디자인 프롬프트 생성기",
+      title: "4. 디자인 프롬프트 생성기",
       description:
         "UI/UX 디자인 가이드 작성을 위한 프롬프트를 생성합니다.\n앞의 문서들을 먼저 작성해주세요.",
       href: "/design",
