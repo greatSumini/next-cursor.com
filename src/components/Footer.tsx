@@ -1,16 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export function Footer() {
   return (
     <footer className="border-t bg-gray-100">
       <div className="max-w-4xl mx-auto container pt-8 pb-16">
-        <div className="flex justify-between items-center">
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col gap-6">
             <div className="text-sm text-muted-foreground">
               © 2025 Next-Cursor.com
             </div>
             <CursorMatfiaBanner />
+            <VODBanner />
           </div>
           <div className="flex gap-4">
             <Link
@@ -54,6 +56,25 @@ function CursorMatfiaBanner() {
         </div>
         <span className="font-medium ml-1">Cursor맛피아</span>
       </div>
+    </Link>
+  );
+}
+
+function VODBanner() {
+  return (
+    <Link
+      href="https://fastcampus.co.kr/data_online_cursor"
+      target="_blank"
+      className="flex items-center gap-2 text-sm text-muted-foreground p-4 border border-black shadow-md rounded-md bg-white hover:bg-gray-100 transition-colors"
+    >
+      <Image
+        src="/fastcampus.svg"
+        alt="패스트캠퍼스 커서 강의"
+        width={20}
+        height={20}
+      />
+      <span className="font-medium">커서 개발 강의 (패스트캠퍼스)</span>
+      <ArrowRight className="w-4 h-4 ml-2" />
     </Link>
   );
 }
