@@ -22,6 +22,12 @@ export default function Page() {
       href: "/usecases",
     },
     {
+      title: "디자인 프롬프트 생성기",
+      description:
+        "UI/UX 디자인 가이드 작성을 위한 프롬프트를 생성합니다.\n앞의 문서들을 먼저 작성해주세요.",
+      href: "/design",
+    },
+    {
       title: "HTML Table to JSON 변환기",
       description: "API 문서 내용을 변수로 옮길 때 좋습니다 :)",
       href: "/dev/table-to-json",

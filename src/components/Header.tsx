@@ -26,6 +26,7 @@ export function Header() {
         { name: "PRD", href: "/prd" },
         { name: "IA", href: "/ia" },
         { name: "유스케이스", href: "/usecases" },
+        { name: "디자인", href: "/design" },
       ],
     },
     {
