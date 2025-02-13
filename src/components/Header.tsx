@@ -22,9 +22,9 @@ export function Header() {
       id: "prompts",
       title: "프롬프트 생성기",
       items: [
-        { name: "PRD 프롬프트 생성기", href: "/prd" },
-        { name: "IA 프롬프트 생성기", href: "/ia" },
-        { name: "유스케이스 프롬프트 생성기", href: "/usecases" },
+        { name: "PRD", href: "/prd" },
+        { name: "IA", href: "/ia" },
+        { name: "유스케이스", href: "/usecases" },
       ],
     },
     {
