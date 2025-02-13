@@ -9,9 +9,13 @@ Write a PRD document based on the following information:
 ${data.overview}
 </product-overview>
 
-<references>
+${
+  isEmptyStringOrNil(data.reference)
+    ? ""
+    : `<references>
 ${data.reference}
-</references>
+</references>`
+}
 
 <must-features>
 ${data.features.map((feature) => `- ${feature}`).join("\n")}
