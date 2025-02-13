@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 
 export function HeroSection() {
   return (
-    <div className="relative -mx-4 sm:-mx-6 md:-mx-8 lg:-mx-12 xl:-mx-16 mb-16">
-      <div className="bg-gradient-to-r from-green-500/40 to-purple-500/40 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-16 py-12">
+    <div className="relative mb-16">
+      <div className="bg-gradient-to-r from-green-500/40 to-purple-500/40 py-12">
         <div className="space-y-6 max-w-4xl mx-auto container">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
