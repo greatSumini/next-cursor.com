@@ -40,10 +40,6 @@ export function DesignPage() {
       title="디자인 프롬프트 생성기"
       description="UI/UX 디자인 가이드 작성을 위한 프롬프트를 생성합니다."
       helpContent={helpContent}
-      nextPage={{
-        buttonTitle: "PRD 작성하기",
-        href: "/prd",
-      }}
       renderForm={({ onGenerate }) => (
         <DesignForm onSubmit={(data) => onGenerate(generatePrompt(data))} />
       )}

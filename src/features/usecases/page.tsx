@@ -40,6 +40,10 @@ export function UsecasesPage() {
       title="유스케이스 프롬프트 생성기"
       description="유스케이스(Use Case) 작성을 위한 프롬프트를 생성합니다."
       helpContent={helpContent}
+      nextPage={{
+        buttonTitle: "디자인 가이드 작성하기",
+        href: "/design",
+      }}
       renderForm={({ onGenerate }) => (
         <UsecaseForm onSubmit={() => onGenerate(generatePrompt())} />
       )}
