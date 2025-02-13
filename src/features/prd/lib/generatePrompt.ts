@@ -14,10 +14,8 @@ ${
     ? ""
     : `<references>
 ${data.reference}
-</references>`
-}
-
-<must-features>
+</references>\n\n`
+}<must-features>
 ${data.features.map((feature) => `- ${feature}`).join("\n")}
 </must-features>
 
@@ -38,10 +36,8 @@ ${
     ? ""
     : `<tech-stack>
 ${data.techStack}
-</tech-stack>`
-}
-
-PRD must include the following contents:
+</tech-stack>\n\n`
+}PRD must include the following contents:
 
 <table-of-contents>
 - Detailed product description
