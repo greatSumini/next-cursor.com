@@ -56,6 +56,10 @@ export function IAForm({ onSubmit }: { onSubmit: (data: IAFormData) => void }) {
                   </Link>
                 </Button>
               </p>
+              <p className="text-sm">
+                먼저 PRD를 작성한 후, 그대로 IA 프롬프트도 붙여넣어
+                작성해주세요.
+              </p>
             </div>
           </div>
         </CardContent>

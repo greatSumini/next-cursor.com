@@ -2,7 +2,7 @@ import { IAFormData } from "../types";
 
 export function generatePrompt(data: IAFormData) {
   const prompt = `
-Write an Information Architecture document based on the following information:
+Write an Information Architecture document based on PRD, and following information:
 
 <navigation-type>
 ${data.navigationType}
