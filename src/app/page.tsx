@@ -37,7 +37,7 @@ export default function Page() {
         <HeroSection />
 
         <div className="max-w-4xl mx-auto container">
-          <h3 className="text-lg font-semibold">Cursor AI tools</h3>
+          <h3 className="text-lg font-semibold mb-2">Cursor AI tools</h3>
           <div className=" grid gap-6 sm:grid-cols-2 mb-20">
             {tools
               .filter((tool) => !tool.dev)
@@ -57,7 +57,7 @@ export default function Page() {
                 </Card>
               ))}
           </div>
-          <h3 className="text-lg font-semibold">Development tools</h3>
+          <h3 className="text-lg font-semibold mb-2">Development tools</h3>
           <div className="grid gap-6 sm:grid-cols-2">
             {tools
               .filter((tool) => tool.dev)
