@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Metadata } from "next";
 import { HeroSection } from "@/features/home/componeonts/HeroSection";
-import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Next-Cursor.com",
@@ -80,7 +79,6 @@ export default function Page() {
           </div>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
