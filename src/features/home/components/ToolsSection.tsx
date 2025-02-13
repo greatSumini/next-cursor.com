@@ -49,7 +49,7 @@ export function ToolsSection({ title, tools }: Props) {
     <motion.div
       className="mb-20"
       initial="hidden"
-      whileInView="visible"
+      animate="visible"
       viewport={{ once: true }}
       variants={containerVariants}
     >
