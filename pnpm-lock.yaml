@@ -56,6 +56,9 @@ importers:
       framer-motion:
         specifier: ^11
         version: 11.18.2(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      js-confetti:
+        specifier: ^0.12.0
+        version: 0.12.0
       lucide-react:
         specifier: ^0.469.0
         version: 0.469.0(react@19.0.0)
@@ -68,6 +71,9 @@ importers:
       react:
         specifier: ^19.0.0
         version: 19.0.0
+      react-canvas-confetti:
+        specifier: ^2.0.7
+        version: 2.0.7(react@19.0.0)
       react-dom:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
@@ -793,6 +799,9 @@ packages:
     peerDependencies:
       react: ^18 || ^19
 
+  '@types/canvas-confetti@1.9.0':
+    resolution: {integrity: sha512-aBGj/dULrimR1XDZLtG9JwxX1b4HPRF6CX9Yfwh3NvstZEm1ZL7RBnel4keCPSqs1ANRu1u2Aoz9R+VmtjYuTg==, tarball: https://registry.npmjs.org/@types/canvas-confetti/-/canvas-confetti-1.9.0.tgz}
+
   '@types/estree@1.0.6':
     resolution: {integrity: sha512-AYnb1nQyY49te+VRAVgmzfcgjYS91mY5P0TKUDCLEM+gNnA+3T6rWITXRLYCpahpqSQbN5cE+gHpnPyXjHWxcw==, tarball: https://registry.npmjs.org/@types/estree/-/estree-1.0.6.tgz}
 
@@ -1022,6 +1031,9 @@ packages:
 
   caniuse-lite@1.0.30001699:
     resolution: {integrity: sha512-b+uH5BakXZ9Do9iK+CkDmctUSEqZl+SP056vc5usa0PL+ev5OHw003rZXcnjNDv3L8P5j6rwT6C0BPKSikW08w==, tarball: https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001699.tgz}
+
+  canvas-confetti@1.9.3:
+    resolution: {integrity: sha512-rFfTURMvmVEX1gyXFgn5QMn81bYk70qa0HLzcIOSVEyl57n6o9ItHeBtUSWdvKAPY0xlvBHno4/v3QPrT83q9g==, tarball: https://registry.npmjs.org/canvas-confetti/-/canvas-confetti-1.9.3.tgz}
 
   chalk@4.1.2:
     resolution: {integrity: sha512-oKnbhFyRIXpUuez8iBMmyEa4nbj4IOQyuhc/wy9kY7/WVPcwIO9VA668Pu8RkO7+0G76SLROeyw9CpQ061i4mA==, tarball: https://registry.npmjs.org/chalk/-/chalk-4.1.2.tgz}
@@ -1639,6 +1651,9 @@ packages:
     resolution: {integrity: sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==, tarball: https://registry.npmjs.org/jiti/-/jiti-1.21.7.tgz}
     hasBin: true
 
+  js-confetti@0.12.0:
+    resolution: {integrity: sha512-1R0Akxn3Zn82pMqW65N1V2NwKkZJ75bvBN/VAb36Ya0YHwbaSiAJZVRr/19HBxH/O8x2x01UFAbYI18VqlDN6g==, tarball: https://registry.npmjs.org/js-confetti/-/js-confetti-0.12.0.tgz}
+
   js-cookie@2.2.1:
     resolution: {integrity: sha512-HvdH2LzI/EAZcUwA8+0nKNtWHqS+ZmijLA30RwZA0bo7ToCckjK5MkGhjED9KoRcXO6BaGI3I9UIzSA1FKFPOQ==, tarball: https://registry.npmjs.org/js-cookie/-/js-cookie-2.2.1.tgz}
 
@@ -1950,6 +1965,11 @@ packages:
 
   queue-microtask@1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==, tarball: https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.3.tgz}
+
+  react-canvas-confetti@2.0.7:
+    resolution: {integrity: sha512-DIj44O35TPAwJkUSIZqWdVsgAMHtVf8h7YNmnr3jF3bn5mG+d7Rh9gEcRmdJfYgRzh6K+MAGujwUoIqQyLnMJw==, tarball: https://registry.npmjs.org/react-canvas-confetti/-/react-canvas-confetti-2.0.7.tgz}
+    peerDependencies:
+      react: '*'
 
   react-dom@19.0.0:
     resolution: {integrity: sha512-4GV5sHFG0e/0AD4X+ySy6UJd3jVl1iNsNHdpad0qhABJ11twS3TTBnseqsKurKcsNqCEFeGL3uLpVChpIO3QfQ==, tarball: https://registry.npmjs.org/react-dom/-/react-dom-19.0.0.tgz}
@@ -3033,6 +3053,8 @@ snapshots:
       '@tanstack/query-core': 5.66.0
       react: 19.0.0
 
+  '@types/canvas-confetti@1.9.0': {}
+
   '@types/estree@1.0.6': {}
 
   '@types/js-cookie@2.2.7': {}
@@ -3308,6 +3330,8 @@ snapshots:
   camelcase-css@2.0.1: {}
 
   caniuse-lite@1.0.30001699: {}
+
+  canvas-confetti@1.9.3: {}
 
   chalk@4.1.2:
     dependencies:
@@ -4088,6 +4112,8 @@ snapshots:
 
   jiti@1.21.7: {}
 
+  js-confetti@0.12.0: {}
+
   js-cookie@2.2.1: {}
 
   js-tokens@4.0.0: {}
@@ -4385,6 +4411,12 @@ snapshots:
   punycode@2.3.1: {}
 
   queue-microtask@1.2.3: {}
+
+  react-canvas-confetti@2.0.7(react@19.0.0):
+    dependencies:
+      '@types/canvas-confetti': 1.9.0
+      canvas-confetti: 1.9.3
+      react: 19.0.0
 
   react-dom@19.0.0(react@19.0.0):
     dependencies:
