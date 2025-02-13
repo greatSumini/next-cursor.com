@@ -24,6 +24,11 @@ export default function Page() {
       href: "/ia",
     },
     {
+      title: "유스케이스 프롬프트 생성기",
+      description: "Use Case 작성을 위한 프롬프트를 생성합니다.",
+      href: "/usecases",
+    },
+    {
       title: "HTML Table to JSON 변환기",
       description: "HTML 테이블을 JSON 형식으로 변환합니다.",
       href: "/dev/table-to-json",
@@ -45,7 +50,7 @@ export default function Page() {
                 <Card key={tool.href}>
                   <CardContent className="p-6 space-y-4">
                     <div className="space-y-2">
-                      <h2 className="text-xl font-semibold">{tool.title}</h2>
+                      <h2 className="text-xl font-bold">{tool.title}</h2>
                       <p className="text-sm text-muted-foreground">
                         {tool.description}
                       </p>

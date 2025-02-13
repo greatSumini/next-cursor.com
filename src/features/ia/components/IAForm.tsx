@@ -42,7 +42,7 @@ export function IAForm({ onSubmit }: { onSubmit: (data: IAFormData) => void }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <Card className="card-hover border-none bg-gradient-to-br from-secondary/50 to-background">
+      <Card className="bg-gradient-to-br from-secondary/50 to-background">
         <CardContent className="pt-6">
           <div className="flex items-start gap-4 text-muted-foreground">
             <div className="text-2xl bg-secondary/50 p-3 rounded-xl">🤔</div>
