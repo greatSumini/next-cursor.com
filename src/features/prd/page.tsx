@@ -65,7 +65,11 @@ export function PrdPage() {
                   <Copy className="w-4 h-4" />
                 </Button>
               </div>
-              <Button className="w-full" asChild>
+              <Button className="w-full" onClick={handleCopy}>
+                복사하기
+                <Copy className="w-4 h-4 ml-2" />
+              </Button>
+              <Button className="w-full" asChild variant="outline">
                 <Link href="/ia">
                   IA도 작성해보세요!
                   <ArrowRight className="w-4 h-4 ml-2" />

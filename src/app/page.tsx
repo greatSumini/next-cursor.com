@@ -2,6 +2,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { Metadata } from "next";
+import { HeroSection } from "@/features/home/componeonts/HeroSection";
+
 export const metadata: Metadata = {
   title: "Next-Cursor.com",
   description:
@@ -30,55 +32,50 @@ export default function Page() {
   ];
 
   return (
-    <div className="container max-w-4xl py-12 space-y-8">
-      <div className="space-y-4">
-        <h1 className="text-4xl font-bold">Next-Cursor.com</h1>
-        <p className="text-muted-foreground">
-          Cursor를 Next-Level로 활용할 수 있게 해주는 도구 & 팁 모음 사이트
-          <br />
-          디자인은 리뉴얼 예정입니다 😅
-        </p>
-      </div>
+    <div className="pb-12 space-y-8">
+      <HeroSection />
 
-      <h3 className="text-lg font-semibold">커서 개발 도구들</h3>
-      <div className="grid gap-6 sm:grid-cols-2 mb-20">
-        {tools
-          .filter((tool) => !tool.dev)
-          .map((tool) => (
-            <Card key={tool.href}>
-              <CardContent className="p-6 space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-xl font-semibold">{tool.title}</h2>
-                  <p className="text-sm text-muted-foreground">
-                    {tool.description}
-                  </p>
-                </div>
-                <Button asChild className="w-full">
-                  <Link href={tool.href}>바로가기</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-      </div>
-      <h3 className="text-lg font-semibold">개발 편의 도구들</h3>
-      <div className="grid gap-6 sm:grid-cols-2">
-        {tools
-          .filter((tool) => tool.dev)
-          .map((tool) => (
-            <Card key={tool.href}>
-              <CardContent className="p-6 space-y-4">
-                <div className="space-y-2">
-                  <h2 className="text-xl font-semibold">{tool.title}</h2>
-                  <p className="text-sm text-muted-foreground">
-                    {tool.description}
-                  </p>
-                </div>
-                <Button asChild className="w-full">
-                  <Link href={tool.href}>바로가기</Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
+      <div className="max-w-4xl mx-auto container">
+        <h3 className="text-lg font-semibold">Cursor AI tools</h3>
+        <div className=" grid gap-6 sm:grid-cols-2 mb-20">
+          {tools
+            .filter((tool) => !tool.dev)
+            .map((tool) => (
+              <Card key={tool.href}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="space-y-2">
+                    <h2 className="text-xl font-semibold">{tool.title}</h2>
+                    <p className="text-sm text-muted-foreground">
+                      {tool.description}
+                    </p>
+                  </div>
+                  <Button asChild className="w-full">
+                    <Link href={tool.href}>바로가기</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+        </div>
+        <h3 className="text-lg font-semibold">Development tools</h3>
+        <div className="grid gap-6 sm:grid-cols-2">
+          {tools
+            .filter((tool) => tool.dev)
+            .map((tool) => (
+              <Card key={tool.href}>
+                <CardContent className="p-6 space-y-4">
+                  <div className="space-y-2">
+                    <h2 className="text-xl font-semibold">{tool.title}</h2>
+                    <p className="text-sm text-muted-foreground">
+                      {tool.description}
+                    </p>
+                  </div>
+                  <Button asChild className="w-full">
+                    <Link href={tool.href}>바로가기</Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+        </div>
       </div>
     </div>
   );

@@ -42,16 +42,25 @@ export function IAForm({ onSubmit }: { onSubmit: (data: IAFormData) => void }) {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      <Card>
+      <Card className="card-hover border-none bg-gradient-to-br from-secondary/50 to-background">
         <CardContent className="pt-6">
           <div className="flex items-start gap-4 text-muted-foreground">
-            <div className="text-2xl">🤔</div>
+            <div className="text-2xl bg-secondary/50 p-3 rounded-xl">🤔</div>
             <div className="space-y-2">
-              <p>잠깐! PRD를 생성하셨나요?</p>
+              <p className="font-semibold text-foreground">
+                잠깐! PRD를 생성하셨나요?
+              </p>
               <p className="text-sm">
                 정확한 IA 작성을 위해 먼저 PRD를 작성해주세요.{" "}
-                <Button variant="link" className="h-auto p-0" asChild>
-                  <Link href="/prd" className="text-primary">
+                <Button
+                  variant="link"
+                  className="h-auto p-0 font-semibold"
+                  asChild
+                >
+                  <Link
+                    href="/prd"
+                    className="text-primary hover:text-primary/80"
+                  >
                     PRD 작성하러 가기 →
                   </Link>
                 </Button>
@@ -65,22 +74,26 @@ export function IAForm({ onSubmit }: { onSubmit: (data: IAFormData) => void }) {
         </CardContent>
       </Card>
 
-      <Card>
-        <CardContent className="pt-6 space-y-4">
-          <div className="space-y-2">
-            <Label>네비게이션 타입</Label>
+      <Card className="card-hover">
+        <CardContent className="pt-6 space-y-6">
+          <div className="space-y-3">
+            <Label className="text-sm font-medium">네비게이션 타입</Label>
             <Select
               value={navigationType}
               onValueChange={(value) =>
                 setNavigationType(value as NavigationType)
               }
             >
-              <SelectTrigger>
+              <SelectTrigger className="input-focus bg-muted/50">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {NAVIGATION_TYPES.map((type) => (
-                  <SelectItem key={type.value} value={type.value}>
+                  <SelectItem
+                    key={type.value}
+                    value={type.value}
+                    className="focus:bg-primary/10"
+                  >
                     {type.label}
                   </SelectItem>
                 ))}
@@ -88,18 +101,24 @@ export function IAForm({ onSubmit }: { onSubmit: (data: IAFormData) => void }) {
             </Select>
           </div>
 
-          <div className="space-y-2">
-            <Label>인증(로그인, 회원가입) 여부</Label>
+          <div className="space-y-3">
+            <Label className="text-sm font-medium">
+              인증(로그인, 회원가입) 여부
+            </Label>
             <Select
               value={authType}
               onValueChange={(value) => setAuthType(value as AuthType)}
             >
-              <SelectTrigger>
+              <SelectTrigger className="input-focus bg-muted/50">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
                 {AUTH_TYPES.map((type) => (
-                  <SelectItem key={type.value} value={type.value}>
+                  <SelectItem
+                    key={type.value}
+                    value={type.value}
+                    className="focus:bg-primary/10"
+                  >
                     {type.label}
                   </SelectItem>
                 ))}
@@ -107,7 +126,7 @@ export function IAForm({ onSubmit }: { onSubmit: (data: IAFormData) => void }) {
             </Select>
           </div>
 
-          <Button type="submit" className="w-full">
+          <Button type="submit" className="w-full button-gradient">
             프롬프트 생성/복사
           </Button>
         </CardContent>
