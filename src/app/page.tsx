@@ -1,8 +1,6 @@
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
 import { Metadata } from "next";
-import { HeroSection } from "@/features/home/componeonts/HeroSection";
+import { HeroSection } from "@/features/home/components/HeroSection";
+import { ToolsSection } from "@/features/home/components/ToolsSection";
 
 export const metadata: Metadata = {
   title: "Next-Cursor.com",
@@ -42,46 +40,15 @@ export default function Page() {
         <HeroSection />
 
         <div className="max-w-4xl mx-auto container">
-          <h3 className="text-lg font-semibold mb-2">Cursor AI tools</h3>
-          <div className=" grid gap-6 sm:grid-cols-2 mb-20">
-            {tools
-              .filter((tool) => !tool.dev)
-              .map((tool) => (
-                <Card key={tool.href}>
-                  <CardContent className="p-6 space-y-4">
-                    <div className="space-y-2">
-                      <h2 className="text-xl font-bold">{tool.title}</h2>
-                      <p className="text-sm text-muted-foreground">
-                        {tool.description}
-                      </p>
-                    </div>
-                    <Button asChild className="w-full">
-                      <Link href={tool.href}>바로가기</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-          </div>
-          <h3 className="text-lg font-semibold mb-2">Development tools</h3>
-          <div className="grid gap-6 sm:grid-cols-2">
-            {tools
-              .filter((tool) => tool.dev)
-              .map((tool) => (
-                <Card key={tool.href}>
-                  <CardContent className="p-6 space-y-4">
-                    <div className="space-y-2">
-                      <h2 className="text-xl font-semibold">{tool.title}</h2>
-                      <p className="text-sm text-muted-foreground">
-                        {tool.description}
-                      </p>
-                    </div>
-                    <Button asChild className="w-full">
-                      <Link href={tool.href}>바로가기</Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              ))}
-          </div>
+          <ToolsSection
+            title="Cursor AI tools"
+            tools={tools.filter((tool) => !tool.dev)}
+          />
+
+          <ToolsSection
+            title="Development tools"
+            tools={tools.filter((tool) => tool.dev)}
+          />
         </div>
       </div>
     </>

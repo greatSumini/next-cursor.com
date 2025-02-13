@@ -10,7 +10,7 @@ export function HeroSection() {
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: 0.25, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold leading-[1.2]"
           >
             Enjoy
@@ -22,7 +22,7 @@ export function HeroSection() {
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
+            transition={{ duration: 0.25, delay: 0.4 }}
             className="text-lg text-black/90 max-w-xl"
           >
             Cursor AI를 더욱 효과적으로 활용할 수 있는 도구들을 제공합니다.
