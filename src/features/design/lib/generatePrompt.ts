@@ -72,6 +72,7 @@ Use markdown format
 - provide each image's url. Use stock photos from picsum.photos where appropriate, only valid URLs you know exist
 - Write in Korean
 - must handle root route
+- consider proper grid system for all components
 </guidelines>
 `.trim();
 
