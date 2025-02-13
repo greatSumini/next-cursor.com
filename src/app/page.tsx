@@ -1,12 +1,5 @@
-import { Metadata } from "next";
 import { HeroSection } from "@/features/home/components/HeroSection";
 import { ToolsSection } from "@/features/home/components/ToolsSection";
-
-export const metadata: Metadata = {
-  title: "Next-Cursor.com",
-  description:
-    "Cursor를 Next-Level로 활용할 수 있게 해주는 도구 & 팁 모음 사이트",
-};
 
 export default function Page() {
   const tools = [
