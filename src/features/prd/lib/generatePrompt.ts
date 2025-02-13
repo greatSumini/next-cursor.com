@@ -37,7 +37,6 @@ ${data.techStack}
 </tech-stack>`
 }
 
-위 정보를 바탕으로 다음 내용이 포함된 PRD를 작성해주세요:
 PRD must include the following contents:
 
 <table-of-contents>
@@ -47,7 +46,6 @@ PRD must include the following contents:
 - Suggested additional features
 - User persona and scenarios
 - Technical stack recommendations
-- Data structure and storage design
 </table-of-contents>
 
 <response-format>
@@ -61,6 +59,7 @@ Use markdown format
 - Write in Korean
 - Clearly separate each section
 - Collect additional reference services and provide detailed rationale
+- Do not include detailed data structure and storage design
 </guidelines>
 `.trim();
 
