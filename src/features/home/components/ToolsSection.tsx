@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 interface Tool {
   title: string;
@@ -66,8 +67,14 @@ export function ToolsSection({ title, tools }: Props) {
                     {tool.description}
                   </p>
                 </div>
-                <Button asChild className="w-full">
-                  <Link href={tool.href}>바로가기</Link>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="w-full hover:text-white"
+                >
+                  <Link href={tool.href}>
+                    바로가기 <ArrowRight className="w-4 h-4 ml-2" />
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
