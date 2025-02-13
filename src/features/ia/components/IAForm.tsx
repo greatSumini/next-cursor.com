@@ -107,22 +107,9 @@ export function IAForm({ onSubmit }: { onSubmit: (data: IAFormData) => void }) {
             </Select>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Button
-              onClick={() => {
-                setNavigationType("sidebar");
-                setAuthType("required");
-              }}
-              type="button"
-              variant="outline"
-              className="w-full"
-            >
-              예시 입력
-            </Button>
-            <Button type="submit" className="w-full">
-              프롬프트 생성/복사
-            </Button>
-          </div>
+          <Button type="submit" className="w-full">
+            프롬프트 생성/복사
+          </Button>
         </CardContent>
       </Card>
     </form>
