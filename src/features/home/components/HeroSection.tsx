@@ -27,7 +27,7 @@ export function HeroSection() {
           >
             Cursor AI를 더욱 효과적으로 활용할 수 있는 도구들을 제공합니다.
             <br />
-            PRD 작성부터 IA 설계까지, 개발 생산성을 높이는 다양한 도구를
+            제품 기획부터 디자인까지, 개발 생산성을 높이는 다양한 도구를
             경험해보세요.
           </motion.p>
         </div>
