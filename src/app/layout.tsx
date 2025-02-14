@@ -21,8 +21,7 @@ export const metadata: Metadata = {
     default: "Next-Cursor.com",
     template: "%s | Next-Cursor.com",
   },
-  description:
-    "Cursor를 Next-Level로 활용할 수 있게 해주는 도구 & 팁 모음 사이트",
+  description: "커서 개발에 특화된 문서 작성 도구 ⚡️",
 };
 
 export default function RootLayout({
