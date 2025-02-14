@@ -43,7 +43,7 @@ ${data.techStack}
 - Detailed product description
 - Reference Services with detailed rationale
 - Core features and specifications
-- Suggested additional features
+${data.suggestFeatures ? "- Suggested additional features" : ""}
 - User persona and scenarios
 - Technical stack recommendations
 </table-of-contents>

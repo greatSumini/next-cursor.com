@@ -42,6 +42,7 @@ export function PRDForm({
   const [overview, setOverview] = useState("");
   const [targetUsers, setTargetUsers] = useState("");
   const [techStack, setTechStack] = useState("");
+  const [suggestFeatures, setSuggestFeatures] = useState(true);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -53,6 +54,7 @@ export function PRDForm({
       platforms: selectedPlatforms,
       storageType,
       techStack,
+      suggestFeatures,
     });
   };
 
@@ -161,6 +163,17 @@ export function PRDForm({
             />
           </div>
 
+          <div className="flex items-center space-x-2">
+            <Checkbox
+              id="suggestFeatures"
+              checked={suggestFeatures}
+              onCheckedChange={(checked) =>
+                setSuggestFeatures(checked as boolean)
+              }
+            />
+            <Label htmlFor="suggestFeatures">추가 기능을 제안 받을까요?</Label>
+          </div>
+
           <div className="grid grid-cols-2 gap-4">
             <Button
               onClick={() => {
@@ -173,6 +186,7 @@ export function PRDForm({
                 setSelectedPlatforms(["web"]);
                 setStorageType("database");
                 setTechStack("Next.js, Supabase, OpenAI");
+                setSuggestFeatures(true);
               }}
               type="button"
               variant="outline"

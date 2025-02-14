@@ -9,4 +9,5 @@ export interface PRDFormData {
   platforms: Platform[];
   storageType: StorageType;
   techStack: string;
+  suggestFeatures: boolean;
 }
