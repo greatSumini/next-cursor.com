@@ -27,6 +27,7 @@
     "date-fns": "^4",
     "es-toolkit": "^1",
     "framer-motion": "^11",
+    "googleapis": "^144.0.0",
     "js-confetti": "^0.12.0",
     "lucide-react": "^0.469.0",
     "next": "15.1.0",
