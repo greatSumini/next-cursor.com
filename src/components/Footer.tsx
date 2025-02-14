@@ -8,8 +8,13 @@ export function Footer() {
       <div className="max-w-4xl mx-auto container pt-8 pb-16">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex flex-col gap-6">
-            <div className="text-sm text-muted-foreground">
-              © 2025 Next-Cursor.com
+            <div className="flex flex-col gap-2">
+              <div className="text-sm text-muted-foreground">
+                © 2025 Next-Cursor.com
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Next-Cursor는 사용자의 입력을 수집하지 않습니다.
+              </div>
             </div>
             <CursorMatfiaBanner />
             <VODBanner />
