@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
@@ -23,6 +23,17 @@ import {
 } from "@/components/ui/dialog";
 import { adjustLightness } from "../lib/colorUtils";
 
+const validateColorInput = (color: string, format: ColorFormat): boolean => {
+  const patterns = {
+    hex: /^#[0-9A-Fa-f]{6}$/,
+    rgb: /^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/,
+    hsl: /^hsl\(\s*\d+\s*,\s*\d+%?\s*,\s*\d+%?\s*\)$/,
+    oklch: /^oklch\(\s*[\d.]+%?\s+[\d.]+\s+[\d.]+\s*\)$/,
+  };
+
+  return patterns[format].test(color);
+};
+
 const COLOR_SHADES: ColorShade[] = [
   "100",
   "200",
@@ -35,12 +46,77 @@ const COLOR_SHADES: ColorShade[] = [
   "900",
 ];
 
+// 새로운 유틸리티 함수 추가
+const isValidShadeForColor = (
+  color: string,
+  shade: ColorShade,
+  format: ColorFormat
+): boolean => {
+  if (!color || !validateColorInput(color, format)) return true;
+
+  const lightnessFactor = {
+    "100": 1.8,
+    "200": 1.6,
+    "300": 1.4,
+    "400": 1.2,
+    "500": 1.0,
+    "600": 0.8,
+    "700": 0.6,
+    "800": 0.4,
+    "900": 0.2,
+  };
+
+  // shade를 100으로 가정했을 때의 색상 계산
+  const factor = lightnessFactor["100"] / lightnessFactor[shade];
+  const lightenedColor = adjustLightness(color, format, factor);
+
+  // RGB 값 추출을 위한 임시 div 생성
+  const div = document.createElement("div");
+  div.style.color = lightenedColor;
+  document.body.appendChild(div);
+  const computedColor = window.getComputedStyle(div).color;
+  document.body.removeChild(div);
+
+  // RGB 값 파싱
+  const rgbMatch = computedColor.match(/\d+/g);
+  if (!rgbMatch) return true;
+
+  // 원본 색상의 RGB 값 추출
+  div.style.color = color;
+  document.body.appendChild(div);
+  const originalComputedColor = window.getComputedStyle(div).color;
+  document.body.removeChild(div);
+  const originalRgbMatch = originalComputedColor.match(/\d+/g);
+  if (!originalRgbMatch) return true;
+
+  // RGB 값 비교
+  for (let i = 0; i < 3; i++) {
+    if (parseInt(rgbMatch[i]) < parseInt(originalRgbMatch[i])) {
+      return false;
+    }
+  }
+
+  return true;
+};
+
 export function ColorPaletteGenerator() {
   const [colorFormat, setColorFormat] = useState<ColorFormat>("hex");
   const [baseShade, setBaseShade] = useState<ColorShade>("500");
   const [baseColor, setBaseColor] = useState("");
   const [palette, setPalette] = useState<ColorPalette | null>(null);
   const [selectedShade, setSelectedShade] = useState<ColorShade | null>(null);
+
+  // 유효한 shade 목록 계산
+  const validShades = COLOR_SHADES.filter((shade) =>
+    isValidShadeForColor(baseColor, shade, colorFormat)
+  );
+
+  // baseShade가 유효하지 않은 경우 자동으로 조정
+  useEffect(() => {
+    if (baseColor && !validShades.includes(baseShade)) {
+      setBaseShade(validShades[Math.floor(validShades.length / 2)]);
+    }
+  }, [baseColor, validShades, baseShade]);
 
   const generatePalette = () => {
     if (!baseColor) return;
@@ -68,6 +144,13 @@ export function ColorPaletteGenerator() {
 
     setPalette(newPalette);
   };
+
+  useEffect(() => {
+    if (validateColorInput(baseColor, colorFormat)) {
+      generatePalette();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [baseColor, baseShade]);
 
   const copyToClipboard = async (format: "text" | "css" | "react") => {
     if (!palette) return;
@@ -106,24 +189,9 @@ export function ColorPaletteGenerator() {
     });
   };
 
-  const validateColorInput = (color: string, format: ColorFormat): boolean => {
-    const patterns = {
-      hex: /^#[0-9A-Fa-f]{6}$/,
-      rgb: /^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/,
-      hsl: /^hsl\(\s*\d+\s*,\s*\d+%?\s*,\s*\d+%?\s*\)$/,
-      oklch: /^oklch\(\s*[\d.]+%?\s+[\d.]+\s+[\d.]+\s*\)$/,
-    };
-
-    return patterns[format].test(color);
-  };
-
   const handleBaseColorChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newColor = e.target.value;
     setBaseColor(newColor);
-
-    if (validateColorInput(newColor, colorFormat)) {
-      generatePalette();
-    }
   };
 
   return (
@@ -175,16 +243,13 @@ export function ColorPaletteGenerator() {
               value={baseShade}
               onValueChange={(value) => {
                 setBaseShade(value as ColorShade);
-                if (baseColor && validateColorInput(baseColor, colorFormat)) {
-                  generatePalette();
-                }
               }}
             >
               <SelectTrigger className="w-[100px]">
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                {COLOR_SHADES.map((shade) => (
+                {validShades.map((shade) => (
                   <SelectItem key={shade} value={shade}>
                     {shade}
                   </SelectItem>
