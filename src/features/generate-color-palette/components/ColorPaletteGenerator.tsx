@@ -122,7 +122,6 @@ export function ColorPaletteGenerator() {
     setBaseColor(newColor);
 
     if (validateColorInput(newColor, colorFormat)) {
-      // 유효한 색상인 경우 자동으로 팔레트 생성
       generatePalette();
     }
   };
@@ -174,7 +173,12 @@ export function ColorPaletteGenerator() {
             />
             <Select
               value={baseShade}
-              onValueChange={(value) => setBaseShade(value as ColorShade)}
+              onValueChange={(value) => {
+                setBaseShade(value as ColorShade);
+                if (baseColor && validateColorInput(baseColor, colorFormat)) {
+                  generatePalette();
+                }
+              }}
             >
               <SelectTrigger className="w-[100px]">
                 <SelectValue />
@@ -189,10 +193,6 @@ export function ColorPaletteGenerator() {
             </Select>
           </div>
         </div>
-
-        <Button onClick={generatePalette} className="w-full">
-          팔레트 생성
-        </Button>
 
         {palette && (
           <div className="space-y-4">
