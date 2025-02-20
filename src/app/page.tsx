@@ -33,6 +33,12 @@ export default function Page() {
       href: "/dev/table-to-json",
       dev: true,
     },
+    {
+      title: "이미지 색상 추출기",
+      description: "이미지에서 원하는 지점의 색상 정보를 추출합니다",
+      href: "/dev/spoid-image-color",
+      dev: true,
+    },
   ];
 
   return (
