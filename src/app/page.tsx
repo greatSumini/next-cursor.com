@@ -39,6 +39,12 @@ export default function Page() {
       href: "/dev/spoid-image-color",
       dev: true,
     },
+    {
+      title: "컬러 팔레트 생성기",
+      description: "기준 색상으로부터 체계적인 색상 팔레트를 생성합니다",
+      href: "/dev/generate-color-palette",
+      dev: true,
+    },
   ];
 
   return (

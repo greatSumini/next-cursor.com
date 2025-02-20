@@ -35,6 +35,7 @@ export function Header() {
       items: [
         { name: "HTML Table to JSON", href: "/dev/table-to-json" },
         { name: "이미지 색상 추출기", href: "/dev/spoid-image-color" },
+        { name: "컬러 팔레트 생성기", href: "/dev/generate-color-palette" },
       ],
     },
   ];
