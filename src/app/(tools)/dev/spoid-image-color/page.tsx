@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { ImageColorPicker } from "@/features/spoid-image-color/ImageColorPicker";
@@ -9,10 +10,42 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { X } from "lucide-react";
 
 export default function SpoidImageColor() {
   const [isHelpOpen, setIsHelpOpen] = useState(false);
+  const [recentImages, setRecentImages] = useState<string[]>([]);
+  const [selectedImageUrl, setSelectedImageUrl] = useState<string>("");
+
+  useEffect(() => {
+    const saved = localStorage.getItem("recentImages");
+    if (saved) {
+      setRecentImages(JSON.parse(saved));
+    }
+  }, []);
+
+  const handleImageAdded = (imageUrl: string) => {
+    // 이미지가 이미 존재하는 경우 기존 이미지 제거
+    const filteredImages = recentImages.filter((img) => img !== imageUrl);
+
+    // 새 이미지를 맨 앞에 추가하고 최대 5개까지만 유지
+    const newImages = [imageUrl, ...filteredImages].slice(0, 5);
+    setRecentImages(newImages);
+    localStorage.setItem("recentImages", JSON.stringify(newImages));
+  };
+
+  const handleRemoveImage = (imageToRemove: string) => {
+    const newImages = recentImages.filter((img) => img !== imageToRemove);
+    setRecentImages(newImages);
+    localStorage.setItem("recentImages", JSON.stringify(newImages));
+
+    // 현재 선택된 이미지가 삭제되는 경우 선택 해제
+    if (selectedImageUrl === imageToRemove) {
+      setSelectedImageUrl("");
+    }
+  };
 
   return (
     <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
@@ -28,7 +61,50 @@ export default function SpoidImageColor() {
           </Button>
         </div>
 
-        <ImageColorPicker />
+        <ImageColorPicker
+          onImageAdded={handleImageAdded}
+          selectedImageUrl={selectedImageUrl}
+        />
+
+        {recentImages.length > 0 && (
+          <Card className="w-full">
+            <CardHeader>
+              <CardTitle className="text-base">최근 작업 이미지</CardTitle>
+            </CardHeader>
+            <CardContent className="pt-6">
+              <div className="flex items-center gap-4 overflow-x-auto pb-2">
+                {recentImages.map((image, index) => (
+                  <div
+                    key={index}
+                    className="relative flex-shrink-0 w-20 h-20 group"
+                  >
+                    <div
+                      className="w-full h-full rounded-md overflow-hidden border cursor-pointer hover:opacity-80 transition-opacity"
+                      onClick={() => setSelectedImageUrl(image)}
+                    >
+                      <img
+                        src={image}
+                        alt={`Recent image ${index + 1}`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <Button
+                      variant="secondary"
+                      size="icon"
+                      className="absolute -top-2 -right-2 w-6 h-6 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handleRemoveImage(image);
+                      }}
+                    >
+                      <X className="w-4 h-4" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         <Dialog open={isHelpOpen} onOpenChange={setIsHelpOpen}>
           <DialogContent>

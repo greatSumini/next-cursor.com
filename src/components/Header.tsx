@@ -32,7 +32,10 @@ export function Header() {
     {
       id: "dev",
       title: "개발자 도구",
-      items: [{ name: "HTML Table to JSON", href: "/dev/table-to-json" }],
+      items: [
+        { name: "HTML Table to JSON", href: "/dev/table-to-json" },
+        { name: "이미지 색상 추출기", href: "/dev/spoid-image-color" },
+      ],
     },
   ];
 

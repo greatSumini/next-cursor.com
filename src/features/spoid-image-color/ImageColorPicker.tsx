@@ -9,7 +9,15 @@ import { Upload } from "lucide-react";
 import { ColorInfo } from "./types";
 import { ColorInfoDisplay } from "./ColorInfoDisplay";
 
-export function ImageColorPicker() {
+interface ImageColorPickerProps {
+  onImageAdded?: (imageUrl: string) => void;
+  selectedImageUrl?: string;
+}
+
+export function ImageColorPicker({
+  onImageAdded,
+  selectedImageUrl,
+}: ImageColorPickerProps) {
   const [imageUrl, setImageUrl] = useState<string>("");
   const [isPickerMode, setIsPickerMode] = useState(false);
   const [selectedColor, setSelectedColor] = useState<ColorInfo | null>(null);
@@ -50,7 +58,15 @@ export function ImageColorPicker() {
     };
   }, [handlePaste]);
 
-  const handleImageLoad = () => {
+  useEffect(() => {
+    if (selectedImageUrl) {
+      setImageUrl(selectedImageUrl);
+      setSelectedColor(null);
+    }
+  }, [selectedImageUrl]);
+
+  const handleImageLoad = (imageUrl: string) => {
+    onImageAdded?.(imageUrl);
     if (!canvasRef.current || !imageRef.current) return;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -157,7 +173,7 @@ export function ImageColorPicker() {
                 src={imageUrl}
                 alt="uploaded"
                 className="max-w-full hidden"
-                onLoad={handleImageLoad}
+                onLoad={() => handleImageLoad(imageUrl)}
               />
               <canvas
                 ref={canvasRef}
