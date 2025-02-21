@@ -12,14 +12,15 @@ Write a comprehensive UI/UX design guide based on the following information:
 </task>
 
 <design-preferences>
-Style: ${data.designStyle}
 ${
   data.themeDetailType === "manual"
-    ? `
+    ? `Style: ${data.designStyle}
 Color Scheme: ${data.colorScheme}
-Primary 500 Color: ${data.primaryColor}
-`
-    : `Theme details: Please analyze and suggest based on the reference service`
+Primary 500 Color: ${data.primaryColor}`
+    : `Theme details: Please analyze the reference service and suggest appropriate:
+- Design style
+- Color scheme
+- Primary colors`
 }
 </design-preferences>
 
@@ -46,7 +47,8 @@ ${
     ? `
 <additional-instructions>
 Please analyze the reference service's design system and suggest appropriate:
-- Color scheme
+- Overall design style and patterns
+- Color scheme and palette
 - Primary colors
 - Mood and atmosphere
 </additional-instructions>

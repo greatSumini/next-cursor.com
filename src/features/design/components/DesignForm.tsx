@@ -75,31 +75,13 @@ export function DesignForm({
       <Card>
         <CardContent className="pt-6 space-y-4">
           <div className="space-y-2">
-            <Label>디자인 스타일</Label>
-            <Select
-              value={designStyle}
-              onValueChange={(value) => setDesignStyle(value as DesignStyle)}
-            >
-              <SelectTrigger>
-                <SelectValue />
-              </SelectTrigger>
-              <SelectContent>
-                {DESIGN_STYLES.map((style) => (
-                  <SelectItem key={style.value} value={style.value}>
-                    {style.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
             <Label htmlFor="references">참고 디자인 서비스</Label>
             <Input
               id="references"
               value={references}
               onChange={(e) => setReferences(e.target.value)}
               placeholder="참고하고 싶은 디자인의 서비스를 알려주세요"
+              required={isThemeDetailDisabled}
             />
           </div>
 
@@ -110,6 +92,7 @@ export function DesignForm({
               onValueChange={(value: "auto" | "manual") => {
                 setThemeDetailType(value);
                 if (value === "auto") {
+                  setDesignStyle("modern");
                   setPrimaryColor("");
                   setColorScheme("monochrome");
                   setMoodKeywords("");
@@ -128,6 +111,26 @@ export function DesignForm({
                 <Label htmlFor="manual">직접 지정할게요</Label>
               </div>
             </RadioGroup>
+          </div>
+
+          <div className="space-y-2">
+            <Label>디자인 스타일</Label>
+            <Select
+              value={designStyle}
+              onValueChange={(value) => setDesignStyle(value as DesignStyle)}
+              disabled={isThemeDetailDisabled}
+            >
+              <SelectTrigger>
+                <SelectValue />
+              </SelectTrigger>
+              <SelectContent>
+                {DESIGN_STYLES.map((style) => (
+                  <SelectItem key={style.value} value={style.value}>
+                    {style.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
 
           <div className="space-y-2">
