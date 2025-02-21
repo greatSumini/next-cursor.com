@@ -13,13 +13,25 @@ Write a comprehensive UI/UX design guide based on the following information:
 
 <design-preferences>
 Style: ${data.designStyle}
+${
+  data.themeDetailType === "manual"
+    ? `
 Color Scheme: ${data.colorScheme}
 Primary 500 Color: ${data.primaryColor}
+`
+    : `Theme details: Please analyze and suggest based on the reference service`
+}
 </design-preferences>
 
+${
+  data.themeDetailType === "manual"
+    ? `
 <mood-keywords>
 ${data.moodKeywords}
 </mood-keywords>
+`
+    : ""
+}
 
 ${
   isEmptyStringOrNil(data.references)
@@ -27,6 +39,19 @@ ${
     : `<references>
 ${data.references}
 </references>`
+}
+
+${
+  data.themeDetailType === "auto"
+    ? `
+<additional-instructions>
+Please analyze the reference service's design system and suggest appropriate:
+- Color scheme
+- Primary colors
+- Mood and atmosphere
+</additional-instructions>
+`
+    : ""
 }
 
 Design guide must include the following contents:

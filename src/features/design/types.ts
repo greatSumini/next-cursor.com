@@ -19,4 +19,5 @@ export interface DesignFormData {
   primaryColor: string;
   moodKeywords: string;
   references: string;
+  themeDetailType: "auto" | "manual";
 }

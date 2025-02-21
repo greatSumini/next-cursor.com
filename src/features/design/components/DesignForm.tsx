@@ -20,6 +20,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { HexColorPicker } from "react-colorful";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 const DESIGN_STYLES: { value: DesignStyle; label: string }[] = [
   { value: "minimal", label: "미니멀" },
@@ -51,6 +52,9 @@ export function DesignForm({
   const [primaryColor, setPrimaryColor] = useState("");
   const [moodKeywords, setMoodKeywords] = useState("");
   const [references, setReferences] = useState("");
+  const [themeDetailType, setThemeDetailType] = useState<"auto" | "manual">(
+    "manual"
+  );
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -60,8 +64,11 @@ export function DesignForm({
       primaryColor,
       moodKeywords,
       references,
+      themeDetailType,
     });
   };
+
+  const isThemeDetailDisabled = themeDetailType === "auto";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -87,12 +94,50 @@ export function DesignForm({
           </div>
 
           <div className="space-y-2">
+            <Label htmlFor="references">참고 디자인 서비스</Label>
+            <Input
+              id="references"
+              value={references}
+              onChange={(e) => setReferences(e.target.value)}
+              placeholder="참고하고 싶은 디자인의 서비스를 알려주세요"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label>테마 세부 지정</Label>
+            <RadioGroup
+              value={themeDetailType}
+              onValueChange={(value: "auto" | "manual") => {
+                setThemeDetailType(value);
+                if (value === "auto") {
+                  setPrimaryColor("");
+                  setColorScheme("monochrome");
+                  setMoodKeywords("");
+                }
+              }}
+              className="flex flex-col space-y-2"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="auto" id="auto" />
+                <Label htmlFor="auto">
+                  참고 서비스를 통해 알아서 설정해주세요
+                </Label>
+              </div>
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="manual" id="manual" />
+                <Label htmlFor="manual">직접 지정할게요</Label>
+              </div>
+            </RadioGroup>
+          </div>
+
+          <div className="space-y-2">
             <Label>포인트 컬러</Label>
             <div className="flex gap-2">
               <Input
                 value={primaryColor}
                 onChange={(e) => setPrimaryColor(e.target.value)}
                 placeholder="HEX 컬러코드 (#FFFFFF)"
+                disabled={isThemeDetailDisabled}
               />
               <Popover>
                 <PopoverTrigger asChild>
@@ -100,6 +145,7 @@ export function DesignForm({
                     variant="outline"
                     className="w-[60px] h-[40px] p-0"
                     style={{ backgroundColor: primaryColor || "#ffffff" }}
+                    disabled={isThemeDetailDisabled}
                   >
                     <span className="sr-only">컬러 선택</span>
                   </Button>
@@ -119,6 +165,7 @@ export function DesignForm({
             <Select
               value={colorScheme}
               onValueChange={(value) => setColorScheme(value as ColorScheme)}
+              disabled={isThemeDetailDisabled}
             >
               <SelectTrigger>
                 <SelectValue />
@@ -145,17 +192,8 @@ export function DesignForm({
               value={moodKeywords}
               onChange={(e) => setMoodKeywords(e.target.value)}
               placeholder="디자인 무드를 표현하는 키워드들을 입력하세요 (키워드당 줄바꿈)"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <Label htmlFor="references">참고 디자인 서비스</Label>
-            <Input
-              id="references"
-              value={references}
-              onChange={(e) => setReferences(e.target.value)}
-              placeholder="참고하고 싶은 디자인의 서비스를 알려주세요"
+              required={!isThemeDetailDisabled}
+              disabled={isThemeDetailDisabled}
             />
           </div>
 
@@ -169,6 +207,7 @@ export function DesignForm({
                 setPrimaryColor("#3182F6");
                 setMoodKeywords("전문적인\n신뢰감\n깔끔한");
                 setReferences("");
+                setThemeDetailType("manual");
               }}
             >
               예시 입력
