@@ -42,6 +42,13 @@ export default function Page() {
       doc: true,
     },
     {
+      title: "3. 오픈소스 라이선스 작성기",
+      description:
+        "오픈소스 라이선스 문서를 자동으로 생성합니다.\npackage.json을 사용합니다.",
+      href: "/open-source-license",
+      doc: true,
+    },
+    {
       title: "HTML Table to JSON 변환기",
       description: "API 문서 내용을 변수로 옮길 때 좋습니다 :)",
       href: "/dev/table-to-json",
