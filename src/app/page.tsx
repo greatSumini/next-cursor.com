@@ -28,16 +28,18 @@ export default function Page() {
       href: "/design",
     },
     {
-      title: "5. 개인정보처리방침 작성기",
+      title: "1. 개인정보처리방침 작성기",
       description:
-        "개인정보처리방침을 단계별로 작성하고 문서를 자동으로 생성합니다.\n서비스 출시 전 필수 문서입니다.",
+        "개인정보처리방침을 단계별로 작성하고 생성합니다.\n출시 전 필수 문서입니다.",
       href: "/privacy-policy",
+      doc: true,
     },
     {
-      title: "6. 서비스이용약관 작성기",
+      title: "2. 서비스이용약관 작성기",
       description:
-        "서비스이용약관을 단계별로 작성하고 문서를 자동으로 생성합니다.\n서비스 출시 전 필수 문서입니다.",
+        "서비스이용약관을 단계별로 작성하고 생성합니다.\n출시 전 필수 문서입니다.",
       href: "/terms-of-service",
+      doc: true,
     },
     {
       title: "HTML Table to JSON 변환기",
@@ -67,7 +69,12 @@ export default function Page() {
         <div className="max-w-4xl mx-auto container">
           <ToolsSection
             title="Cursor AI tools"
-            tools={tools.filter((tool) => !tool.dev)}
+            tools={tools.filter((tool) => !tool.dev && !tool.doc)}
+          />
+
+          <ToolsSection
+            title="Document tools"
+            tools={tools.filter((tool) => tool.doc)}
           />
 
           <ToolsSection
