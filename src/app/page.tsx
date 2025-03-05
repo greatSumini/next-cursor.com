@@ -28,6 +28,12 @@ export default function Page() {
       href: "/design",
     },
     {
+      title: "5. 개인정보처리방침 작성기",
+      description:
+        "개인정보처리방침을 단계별로 작성하고 문서를 자동으로 생성합니다.\n서비스 출시 전 필수 문서입니다.",
+      href: "/privacy-policy",
+    },
+    {
       title: "HTML Table to JSON 변환기",
       description: "API 문서 내용을 변수로 옮길 때 좋습니다 :)",
       href: "/dev/table-to-json",

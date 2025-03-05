@@ -16,6 +16,10 @@ import Link from "next/link";
 interface Props {
   title: string;
   description: string;
+  dialog?: {
+    title?: string;
+    description?: string;
+  };
   nextPage?: {
     buttonTitle: string;
     href: string;
@@ -34,6 +38,7 @@ interface Props {
 export function PromptGeneratorLayout({
   title,
   description,
+  dialog,
   helpContent,
   nextPage,
   renderForm,
@@ -67,9 +72,12 @@ export function PromptGeneratorLayout({
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="sm:max-w-[600px]">
           <DialogHeader>
-            <DialogTitle>프롬프트가 생성되었습니다! 🎉</DialogTitle>
+            <DialogTitle>
+              {dialog?.title || "프롬프트가 생성되었습니다! 🎉"}
+            </DialogTitle>
             <DialogDescription className="space-y-4">
-              아래 생성된 프롬프트를 ChatGPT 등 서비스에 붙여넣어주세요.
+              {dialog?.description ||
+                "아래 생성된 프롬프트를 ChatGPT 등 서비스에 붙여넣어주세요."}
               <div className="relative">
                 <div className="bg-muted p-4 rounded-lg whitespace-pre-wrap text-sm max-h-[300px] overflow-y-auto">
                   <span className="text-ellipsis h-full overflow-hidden">
