@@ -12,13 +12,11 @@ export default function AdSense() {
 
   return (
     <>
-      <Script
-        id="adsense-init"
-        strategy="afterInteractive"
+      <script
         async
-        src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT_ID}`}
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9147324916971040"
         crossOrigin="anonymous"
-      />
+      ></script>
     </>
   );
 }
