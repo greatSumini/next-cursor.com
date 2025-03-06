@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://next-cursor.com
+
+# Sitemaps
+Sitemap: https://next-cursor.com/sitemap.xml
