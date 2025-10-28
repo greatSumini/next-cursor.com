@@ -10,19 +10,25 @@ export default function Page() {
       href: "/prd",
     },
     {
-      title: "2. IA 프롬프트 생성기",
+      title: "2. TRD 프롬프트 생성기",
+      description:
+        "TRD 작성을 위한 프롬프트를 생성합니다.\n기술 요구사항을 명확히 정의합니다.",
+      href: "/trd",
+    },
+    {
+      title: "3. IA 프롬프트 생성기",
       description:
         "IA 작성을 위한 프롬프트를 생성합니다.\n반드시 PRD를 먼저 작성해주세요.",
       href: "/ia",
     },
     {
-      title: "3. 유스케이스 프롬프트 생성기",
+      title: "4. 유스케이스 프롬프트 생성기",
       description:
         "유스케이스 작성을 위한 프롬프트를 생성합니다.\n반드시 PRD, IA를 먼저 작성해주세요.",
       href: "/usecases",
     },
     {
-      title: "4. 디자인 프롬프트 생성기",
+      title: "5. 디자인 프롬프트 생성기",
       description:
         "UI/UX 디자인 가이드 작성을 위한 프롬프트를 생성합니다.\n앞의 문서들을 먼저 작성해주세요.",
       href: "/design",

@@ -24,6 +24,7 @@ export function Header() {
       title: "프롬프트 생성기",
       items: [
         { name: "PRD", href: "/prd" },
+        { name: "TRD", href: "/trd" },
         { name: "IA", href: "/ia" },
         { name: "유스케이스", href: "/usecases" },
         { name: "디자인", href: "/design" },
